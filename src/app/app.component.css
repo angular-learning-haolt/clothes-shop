@@ -1,0 +1,19 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content[_ngcontent-c0] {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: max-content;
+    padding: 10px;
+    z-index: 1;
+    right: 0;
+    top: 100%;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
