@@ -1,0 +1,7 @@
+img { max-width: 100px; }
+img[alt="plus"] { width: 20px;}
+.add-more-address-btn {
+    border: 1px solid #e6e6e6;
+    padding: 0px 5px 4px;
+    border-radius: 20px;
+}

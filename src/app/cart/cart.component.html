@@ -1,3 +1,13 @@
-<p>
-  cart works!
-</p>
+<app-product-order></app-product-order>
+<div class="d-flex justify-content-between">
+	<button class="btn btn-light" 
+		(click)="onBackToProducts()"
+	>
+		Continue buying
+	</button>
+	<button class="btn btn-success" 
+		(click)="onGoToCheckout()"
+	>
+		Checkout
+	</button>
+</div>

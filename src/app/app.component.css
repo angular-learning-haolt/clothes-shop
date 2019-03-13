@@ -17,3 +17,7 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.nav-item.active {
+    border-bottom: 2px solid #e6e6e6;
+}
