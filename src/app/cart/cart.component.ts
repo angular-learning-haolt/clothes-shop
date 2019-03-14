@@ -10,7 +10,9 @@ export class CartComponent implements OnInit {
 
 	constructor(
 		public routerService : Router
-	) { }
+	) {
+		console.log(this.routerService.getCurrentNavigation().extras.state);
+	}
 
 	ngOnInit() {
 	}

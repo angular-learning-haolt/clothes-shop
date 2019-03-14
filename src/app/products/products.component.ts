@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './../../app/product';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-products',
@@ -22,7 +23,10 @@ export class ProductsComponent implements OnInit {
 	public name : string = '';
 	public category : string;
 	public price : number;
-	constructor() { }
+
+	constructor(
+		public routerService : Router
+	) { }
 
 	ngOnInit() {
 		this._products = this.getProducts(this.name,this.category, this.price, this.products);
@@ -63,7 +67,7 @@ export class ProductsComponent implements OnInit {
 		return result;
 	}
 
-	onClickInput() {
-		// console.log(this.name);
+	onAddToCart(_product: Product) {
+		this.routerService.navigate(['cart'], { state: { selectedProduct: _product } });
 	}
 }

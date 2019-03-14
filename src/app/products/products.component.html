@@ -9,7 +9,11 @@
 						<img src="{{ _product.imgUrl }}" alt="_product"/><hr>
 						<h5 class="card-title">{{ _product.name }}</h5>
 						<p class="my-3">{{ _product.price | currency : 'VND' }}</p>
-						<a href="#" class="btn btn-success">Buy now</a>
+						<a href="#" class="btn btn-success"
+							(click)="onAddToCart(_product); $event.preventDefault();"
+						>
+							Buy now
+						</a>
 					</div>
 				</div>
     		</div>
