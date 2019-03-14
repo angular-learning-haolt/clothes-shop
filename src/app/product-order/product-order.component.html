@@ -15,12 +15,16 @@
 			<td>{{ inCartProduct.name }}</td>
 			<td><img src="{{ inCartProduct.imgUrl }}" alt="product"/></td>
 			<td>{{ inCartProduct.price }}</td>
-			<td><input type="number" name="quantity" value="{{ inCartProduct.quantity }}"><small>hasCheckout</small></td>
-			<td>{{ inCartProduct.price *5 }}</td>
+			<td>
+                <button class="btn btn-info btn-xs minus" (click)="changeQuantity(inCartProduct, -1)"><i class="fas fa-minus"></i></button>
+				{{ inCartProduct.quantity }}
+                <button class="btn btn-info btn-xs plus" (click)="changeQuantity(inCartProduct, +1)"><i class="fas fa-plus"></i></button>
+			</td>
+			<td>{{ inCartProduct.price * inCartProduct.quantity }}</td>
 		</tr>
 	</tbody>
 	<tfoot>
 		<td colspan="5"><b>SUMMARY</b></td>
-		<td><b>1000000đ</b></td>
+		<td><b>65266</b></td>
 	</tfoot>
 </table>
