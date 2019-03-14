@@ -12,25 +12,31 @@ export class ProductOrderComponent implements OnInit {
 	}
 
 	@Input() inCartProducts: any[];
-
 	public summary : number;
 
-
-	// public addedToCartProducts : any[] = this.selectedProducts;
 	ngOnInit() {
-		console.log(this.inCartProducts);
+		this.onCountSummary(this.inCartProducts);
 	}
 
 	changeQuantity(product, val) {
 		switch (val) {
 			case -1:
-				product.quantity = product.quantity !== 0? product.quantity - 1 : 0;
+				product.quantity = product.quantity !== 0 ? product.quantity - 1 : 0;
 				break;
-			
 			case 1:
 				product.quantity += 1;
 				break;
 		}
 		localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
+		this.onCountSummary(this.inCartProducts);
+	}
+
+	onCountSummary(products: any[]){
+		this.summary = 0;
+		let i =0;
+		let length = products.length;
+		for(i ; i < length; i++) {
+			this.summary += (products[i].price * products[i].quantity);
+		}
 	}
 }
