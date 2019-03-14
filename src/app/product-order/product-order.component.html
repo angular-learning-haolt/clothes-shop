@@ -10,13 +10,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>1</td>
-			<td>Baggy Jeans</td>
-			<td><img src="./../../assets/images/product.jpg" alt="product"/></td>
-			<td>500000đ</td>
+		<tr *ngFor="let selectedProduct of selectedProducts; let i = index">
+			<td>{{ i + 1 }}</td>
+			<td>{{ selectedProduct.name }}</td>
+			<td><img src="{{ selectedProduct.imgUrl }}" alt="product"/></td>
+			<td>{{ selectedProduct.price }}</td>
 			<td><input type="number" name="quantity" value="1"><small>hasCheckout</small></td>
-			<td>500000đ</td>
+			<td>{{ selectedProduct.price *5 }}</td>
 		</tr>
 	</tbody>
 	<tfoot>
@@ -24,3 +24,4 @@
 		<td><b>1000000đ</b></td>
 	</tfoot>
 </table>
+{{selectedProducts | json}}
