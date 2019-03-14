@@ -10,9 +10,9 @@ export class ProductOrderComponent implements OnInit {
 
 	constructor() { }
 
-	@Input() selectedProducts: Product;
+	@Input() selectedProducts: Product[];
 
+	// public addedToCartProducts : any[] = this.selectedProducts;
 	ngOnInit() {
 	}
-
 }

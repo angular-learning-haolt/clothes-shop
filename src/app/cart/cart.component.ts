@@ -15,12 +15,12 @@ export class CartComponent implements OnInit {
 		if (this.selectedProduct) {
 			if (localStorage.getItem('selectedProducts') === null) {
 				localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts));
-			}
-			else {
-				this.selectedProducts = JSON.parse(localStorage.getItem('selectedProducts'));
-			}
-			this.selectedProducts.push(this.selectedProduct);
-			localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts));
+		}
+		else {
+			this.selectedProducts = JSON.parse(localStorage.getItem('selectedProducts'));
+		}
+		this.selectedProducts.push(this.selectedProduct);
+		localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts));
 		}
 	}
 
