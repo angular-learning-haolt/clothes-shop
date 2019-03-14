@@ -17,9 +17,7 @@ export class ProductsComponent implements OnInit {
 		new Product(5, 'Yellow T-shirt', 'https://unixtitan.net/images/tshirt-clipart-shrit-7.png', 't-shirt', 200000),
 		new Product(5, 'Jeans', 'https://unixtitan.net/images/jeans-clipart-work-pants-8.png', 'jeans', 200000)
 	]
-
 	public _products : Product[];
-	
 	public categories = ['blouse', 'sweater', 't-shirt', 'jeans']
 	public name : string = '';
 	public category : string;
