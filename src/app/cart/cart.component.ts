@@ -12,35 +12,39 @@ export class CartComponent implements OnInit {
 	constructor(
 		public routerService : Router
 	) {
-		// if (this.selectedProduct) {
-		// 	if (localStorage.getItem('selectedProducts') === null) {
-		// 		localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts));
-		// }
-		// else {
-		// 	this.selectedProducts = JSON.parse(localStorage.getItem('selectedProducts'));
-		// }
-		// this.selectedProducts.push(this.selectedProduct);
-		// localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts));
-		// }
-		if (this.selectedProduct !== null) {
-			this.inCartProduct.quantity = 1;
-			// this.inCartProducts.push(this.inCartProduct);
-			console.log(this.inCartProducts);
+		if (localStorage.getItem('inCartProducts') === null) {
+			localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
+		}
+		else {
+			this.inCartProducts = JSON.parse(localStorage.getItem('inCartProducts'));
+		}
 
+		if (this.selectedProduct) {
 
-			if (localStorage.getItem('inCartProducts') === null) {
-					localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
+			if (this.inCartProducts.length === 0) {
+				this.inCartProduct = {...this.selectedProduct};
+				this.inCartProduct.quantity = 1;
+				this.inCartProducts.push(this.inCartProduct);
+				localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
 			}
 			else {
-				this.inCartProducts = JSON.parse(localStorage.getItem('inCartProducts'));
-			}
-			this.inCartProducts.push(this.selectedProduct);
-			localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
+				let index = this.inCartProducts.findIndex((product)=> product.id === this.selectedProduct.id);
+				if (index === -1) {
+					this.inCartProduct = {...this.selectedProduct};
+					this.inCartProduct.quantity = 1;
+					this.inCartProducts.push(this.inCartProduct);
+					localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
+				}
+				else {
+					this.inCartProducts[index].quantity += 1;
+					localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
+				}
+			}	
 		}
 	}
 
 	public selectedProduct : Product = this.routerService.getCurrentNavigation().extras.state? this.routerService.getCurrentNavigation().extras.state.selectedProduct: null;
-	public inCartProduct : any = {...this.selectedProduct}; // đoạn này để Product[] đc ko ? ko đc nhưng tại sao -_-
+	public inCartProduct : any; // đoạn này để Product[] đc ko ? ko đc nhưng tại sao -_-
 	public inCartProducts : any[] = [];
 
 	ngOnInit() {
