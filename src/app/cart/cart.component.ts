@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './../../app/product';
-import { ProductBill } from './../../app/product-bill';
 import { Router } from '@angular/router';
 
 @Component({
@@ -48,7 +47,7 @@ export class CartComponent implements OnInit {
 	public inCartProduct : any; // đoạn này để Product[] đc ko ? ko đc nhưng tại sao -_-
 	public inCartProducts : any[] = [];
 	public hasCheckOut : boolean = false;
-	public productBills : ProductBill[] = [];
+	public billSum : number;
 
 	ngOnInit() {
 	}
@@ -59,6 +58,18 @@ export class CartComponent implements OnInit {
 
 	onCheckout() {
 		this.hasCheckOut = true;
+		this.billSum = this.getBillSum();
+	}
+
+	getBillSum() {
+		this.inCartProducts = this.inCartProducts.filter(( product ) => product.quantity !== 0);
+		localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
+		let allPrices = this.inCartProducts.map(a => a.price);
+		let allQuantity = this.inCartProducts.map(a => a.quantity);
+		let summary = allPrices.map( (price, index) => {
+			return price * allQuantity[index];
+		});
+		return summary.reduce((item1, item2) =>  item1 + item2);
 	}
 }
 

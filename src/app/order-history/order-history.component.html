@@ -9,21 +9,22 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>1</td>
-			<td>Hao Le</td>
-			<td>295 Bach Mai, Hai Ba Trung, Ha Noi.</td>
+		<tr *ngFor="let productBill of productBills; let i = index">
+			<td>{{ i + 1 }}</td>
+			<td>{{ productBill.name }}</td>
 			<td>
-				<ul>
-					<li><span>Baggy Jeans(1): 500000đ</span></li>
-					<li><span>Baggy Jeans(2): 500000đ</span></li>
-				</ul>
+				<!-- <ul *ngFor="let productBill.address of productBill.addresses">
+					<li><span>productBill.address</span></li>
+					<li><span>productBill.address</span></li>
+				</ul> -->
 			</td>
-			<td>500000đ</td>
+			<td>
+				<!-- <ul *ngFor="let productBill.product of productBill.products">
+					<li><span>productBill.product.name</span></li>
+					<li><span>productBill.product.price</span></li>
+				</ul> -->
+			</td>
+			<td>{{ productBill.summary | currency : 'VND' }}</td>
 		</tr>
 	</tbody>
-	<tfoot>
-		<td colspan="4"><b>SUMMARY</b></td>
-		<td><b>1000000đ</b></td>
-	</tfoot>
 </table>

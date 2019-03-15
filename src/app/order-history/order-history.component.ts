@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-history',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderHistoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+  	public routerService : Router
+  ) { }
 
   ngOnInit() {
+  	console.log(this.productBills);
   }
+
+  public productBills : any[] = this.routerService.getCurrentNavigation().extras.state? this.routerService.getCurrentNavigation().extras.state.productBills: null;
 
 }
