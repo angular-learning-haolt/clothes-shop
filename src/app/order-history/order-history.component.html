@@ -13,16 +13,17 @@
 			<td>{{ i + 1 }}</td>
 			<td>{{ productBill.name }}</td>
 			<td>
-				<!-- <ul *ngFor="let productBill.address of productBill.addresses">
-					<li><span>productBill.address</span></li>
-					<li><span>productBill.address</span></li>
-				</ul> -->
+				<ul *ngFor="let address of productBill.addresses">
+					<li><span>{{ address }}</span></li>
+				</ul>
 			</td>
 			<td>
-				<!-- <ul *ngFor="let productBill.product of productBill.products">
-					<li><span>productBill.product.name</span></li>
-					<li><span>productBill.product.price</span></li>
-				</ul> -->
+				<ul *ngFor="let product of productBill.products; let i = index">
+					<li>
+						<p><i>Name:{{ product.name }}</i></p>
+						<p><i>Price:{{ product.quantity }} x {{ product.price }} (quantity x unit price)</i></p>
+					</li>
+				</ul>
 			</td>
 			<td>{{ productBill.summary | currency : 'VND' }}</td>
 		</tr>
