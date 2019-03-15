@@ -39,8 +39,12 @@ export class CartComponent implements OnInit {
 					this.inCartProducts[index].quantity += 1;
 					localStorage.setItem('inCartProducts', JSON.stringify(this.inCartProducts));
 				}
-			}	
+			}
 		}
+
+		// if (localStorage.getItem('inCartProducts') !== null) {
+			
+		// }
 	}
 
 	public selectedProduct : Product = this.routerService.getCurrentNavigation().extras.state? this.routerService.getCurrentNavigation().extras.state.selectedProduct: null;
@@ -57,8 +61,14 @@ export class CartComponent implements OnInit {
 	}
 
 	onCheckout() {
-		this.hasCheckOut = true;
-		this.billSum = this.getBillSum();
+		if (this.inCartProducts.length !== 0) {
+			console.log(this.inCartProducts);
+			this.hasCheckOut = true;
+			this.billSum = this.getBillSum();
+		}
+		else {
+			alert('Please choose any products ^^')
+		}
 	}
 
 	getBillSum() {
