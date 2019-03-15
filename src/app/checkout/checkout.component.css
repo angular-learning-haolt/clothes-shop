@@ -6,3 +6,6 @@ img[alt="plus"] { width: 20px;}
     border-radius: 20px;
 }
 .information-customer-form { width: 40% }
+.form-group-address { position: relative; }
+.form-group-address a { position: absolute; top: 0; right: 0}
+textarea { resize: none;}

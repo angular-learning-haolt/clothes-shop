@@ -1,19 +1,16 @@
 <app-product-order [inCartProducts]="inCartProducts" [hasCheckOut]="hasCheckOut" ></app-product-order>
-
-	<ng-container *ngIf="!hasCheckOut; else caseCheckOut">
-		<div class="d-flex justify-content-between">
-			<button class="btn btn-light" 
-				(click)="onBackToProducts()"
-			>
-				Continue buying
-			</button>
-			<button class="btn btn-success" 
-				(click)="onCheckout()"
-			>
-				Checkout
-			</button>
-		</div>
-	</ng-container>
-	<ng-template #caseCheckOut>
-		<app-checkout></app-checkout>
-	</ng-template>
+<button class="btn btn-light" 
+	(click)="onBackToProducts()"
+>
+	Continue buying
+</button>
+<ng-container *ngIf="!hasCheckOut; else caseCheckOut">
+	<button class="btn btn-success float-right" 
+		(click)="onCheckout()"
+	>
+		Checkout
+	</button>
+</ng-container>
+<ng-template #caseCheckOut>
+	<app-checkout></app-checkout>
+</ng-template>
