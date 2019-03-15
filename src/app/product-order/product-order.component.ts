@@ -12,6 +12,7 @@ export class ProductOrderComponent implements OnInit {
 	}
 
 	@Input() inCartProducts: any[];
+	@Input() hasCheckOut: boolean;
 	public summary : number;
 
 	ngOnInit() {

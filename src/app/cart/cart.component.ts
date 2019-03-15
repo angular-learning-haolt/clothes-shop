@@ -46,6 +46,7 @@ export class CartComponent implements OnInit {
 	public selectedProduct : Product = this.routerService.getCurrentNavigation().extras.state? this.routerService.getCurrentNavigation().extras.state.selectedProduct: null;
 	public inCartProduct : any; // đoạn này để Product[] đc ko ? ko đc nhưng tại sao -_-
 	public inCartProducts : any[] = [];
+	public hasCheckOut : boolean = false;
 
 	ngOnInit() {
 	}
@@ -54,8 +55,8 @@ export class CartComponent implements OnInit {
 		this.routerService.navigate(['']);
 	}
 
-	onGoToCheckout() {
-		this.routerService.navigateByUrl('checkout');
+	onCheckout() {
+		this.hasCheckOut = true;
 	}
 }
 

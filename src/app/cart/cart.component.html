@@ -1,4 +1,4 @@
-<app-product-order [inCartProducts]="inCartProducts"></app-product-order>
+<app-product-order [inCartProducts]="inCartProducts" [hasCheckOut]="hasCheckOut" ></app-product-order>
 <div class="d-flex justify-content-between">
 	<button class="btn btn-light" 
 		(click)="onBackToProducts()"
@@ -6,8 +6,9 @@
 		Continue buying
 	</button>
 	<button class="btn btn-success" 
-		(click)="onGoToCheckout()"
+		(click)="onCheckout()"
 	>
 		Checkout
 	</button>
 </div>
+<app-checkout *ngIf="hasCheckOut"></app-checkout>

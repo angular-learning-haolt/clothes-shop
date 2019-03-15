@@ -16,9 +16,15 @@
 			<td><img src="{{ inCartProduct.imgUrl }}" alt="product"/></td>
 			<td>{{ inCartProduct.price | currency : 'VND' }}</td>
 			<td>
-                <button class="btn btn-info" (click)="changeQuantity(inCartProduct, -1)"><i class="fas fa-minus"></i></button>
-				{{ inCartProduct.quantity }}
-                <button class="btn btn-info" (click)="changeQuantity(inCartProduct, +1)"><i class="fas fa-plus"></i></button>
+                
+                <ng-container *ngIf="!hasCheckOut; else caseCheckOut">
+					<button class="btn btn-info" (click)="changeQuantity(inCartProduct, -1)"><i class="fas fa-minus"></i></button>
+					{{ inCartProduct.quantity }}
+	                <button class="btn btn-info" (click)="changeQuantity(inCartProduct, +1)"><i class="fas fa-plus"></i></button>
+				</ng-container>
+				<ng-template #caseCheckOut>
+					{{ inCartProduct.quantity }}
+				</ng-template>
 			</td>
 			<td>{{ (inCartProduct.price * inCartProduct.quantity) | currency : 'VND' }}</td>
 		</tr>
