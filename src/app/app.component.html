@@ -9,10 +9,10 @@
                 <a class="nav-link" [routerLink]="['products']">Products</a>
             </li>
             <li class="nav-item dropdown" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['cart']">Cart(<span>5</span>)
+                <a class="nav-link" [routerLink]="['cart']">Cart(<span>{{ quantityProductInCart }}</span>)
                 </a>
                 <div class="dropdown-content">
-                    You got 2 products on cart.
+                    <app-product-order></app-product-order>
                 </div>
             </li>
             <li class="nav-item" routerLinkActive="active">
