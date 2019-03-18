@@ -31,10 +31,6 @@ const routes : Routes = [
         component: OrderHistoryComponent
     },
     {
-        path: 'checkout',
-        component: CheckoutComponent
-    },
-    {
         path: '**',
         component: NotFoundComponent
     }

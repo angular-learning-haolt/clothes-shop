@@ -15,6 +15,9 @@ export class AppComponent implements OnInit {
 	public inCartProducts : any[] = [];
 
 	ngOnInit() {
+		if (localStorage.getItem('inCartProducts') !== null) {
+			this.quantityProductInCart = JSON.parse(localStorage.getItem('inCartProducts')).length;
+		}
 	}
 	
 	displayDropdown() {
