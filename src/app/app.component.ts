@@ -18,17 +18,8 @@ export class AppComponent implements OnInit {
 	}
 	
 	displayDropdown() {
-		// this.showDropdown = val;
 		if (localStorage.getItem('inCartProducts') !== null) {
-			if (localStorage.getItem('inCartProducts').split('},{').length > 1) {
-				this.quantityProductInCart = localStorage.getItem('inCartProducts').split('},{').length;
-			}
-			else if (localStorage.getItem('inCartProducts').split('}}').length === 1) {
-				this.quantityProductInCart = 1
-			}
-			else if (localStorage.getItem('inCartProducts') == null) {
-				this.quantityProductInCart = 0
-			}
+			this.quantityProductInCart = JSON.parse(localStorage.getItem('inCartProducts')).length;
 			this.inCartProducts = JSON.parse(localStorage.getItem('inCartProducts'));
 		}
 	}
