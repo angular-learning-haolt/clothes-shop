@@ -12,11 +12,13 @@ export class AppComponent implements OnInit {
 	) { }
 
 	public quantityProductInCart : number = 0;
+	public inCartProducts : any[] = [];
 
 	ngOnInit() {
 	}
-
-	ngAfterContentChecked() {
+	
+	displayDropdown() {
+		// this.showDropdown = val;
 		if (localStorage.getItem('inCartProducts') !== null) {
 			if (localStorage.getItem('inCartProducts').split('},{').length > 1) {
 				this.quantityProductInCart = localStorage.getItem('inCartProducts').split('},{').length;
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
 			else if (localStorage.getItem('inCartProducts') == null) {
 				this.quantityProductInCart = 0
 			}
+			this.inCartProducts = JSON.parse(localStorage.getItem('inCartProducts'));
 		}
 	}
 }

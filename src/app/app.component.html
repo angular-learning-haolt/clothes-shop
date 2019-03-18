@@ -8,11 +8,13 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['products']">Products</a>
             </li>
-            <li class="nav-item dropdown" routerLinkActive="active">
+            <li class="nav-item dropdown" routerLinkActive="active"
+                (mouseenter) ="displayDropdown()" 
+            >
                 <a class="nav-link" [routerLink]="['cart']">Cart(<span>{{ quantityProductInCart }}</span>)
                 </a>
                 <div class="dropdown-content">
-                    <app-product-order></app-product-order>
+                    <app-product-order [inCartProducts]="inCartProducts" [hasCheckOut]="false" ></app-product-order>
                 </div>
             </li>
             <li class="nav-item" routerLinkActive="active">
